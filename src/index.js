@@ -1,5 +1,5 @@
 const { Client, Intents } = require('discord.js')
-const { startsWith, toLower } = require('lodash')
+const { startsWith, toLower, split } = require('lodash')
 require('dotenv').config()
 
 const Wordle = require('./wordle.js')
@@ -19,8 +19,20 @@ client.on('messageCreate', (msg) => {
     return
   }
 
-  if (startsWith(msg.content, prefix)) {
-    switch (toLower(msg.content)) {
+  const [command] = split(msg.content, ' ', 1)
+
+  if (startsWith(command, prefix)) {
+    switch (toLower(command)) {
+      case '!help': {
+        msg.channel.send(`
+          🌟 You can only play once every day 🌟\n
+          Command List\n
+          !play: start your wordle game\n
+          !guess {anwser}: guess the answer\n
+          !wordlestats: show your game status
+        `)
+        break
+      }
       case '!play': {
         Wordle.LoadNewWordle(msg)
         break
