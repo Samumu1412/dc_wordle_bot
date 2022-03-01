@@ -1,3 +1,5 @@
+const prefix = '!'
+
 const answers = [
   'ABUSE',
 
@@ -1195,5 +1197,6 @@ const answers = [
 ]
 
 module.exports = {
+  prefix,
   answers,
 }
