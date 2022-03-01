@@ -1,10 +1,15 @@
 # DiscordWordleBot
 This code can be added to your discord bot to allow you to play wordle with it
 
-You will need to run a few commands to install all packages
+## Get Started
+1. Install dependencies
+```npm i```
+2. Create .env file in the root directory 
+- - Constant name should be same as .env.example
+3. Modify the constants in constants.js
+- - Prefix will be the symbol detected for recognizing command for our bot
 
-npm install jquery-csv
-
-npm install fx
-
-npm install canvas
+## Wordle Game
+You can only play once every day
+- Use !play & !guess to start your game
+- Use !wordlestats to see your game status

@@ -3,6 +3,7 @@ const { startsWith, toLower } = require('lodash')
 require('dotenv').config()
 
 const Wordle = require('./wordle.js')
+const { prefix } = require('./constant')
 
 const client = new Client({
   intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
@@ -12,7 +13,6 @@ client.once('ready', () => {
   console.log('The bot is online')
 })
 
-const prefix = '!'
 
 client.on('messageCreate', (msg) => {
   if (msg.author.username === client.user.username) {
@@ -21,7 +21,7 @@ client.on('messageCreate', (msg) => {
 
   if (startsWith(msg.content, prefix)) {
     switch (toLower(msg.content)) {
-      case '!playwordle': {
+      case '!play': {
         Wordle.LoadNewWordle(msg)
         break
       }
